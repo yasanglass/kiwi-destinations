@@ -4,6 +4,7 @@
     package="dev.yasan.kiwi">
 
     <application
+        android:name=".presentation.ApplicationClass"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
