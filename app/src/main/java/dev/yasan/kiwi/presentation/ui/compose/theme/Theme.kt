@@ -1,4 +1,4 @@
-package dev.yasan.kiwi.ui.theme
+package dev.yasan.kiwi.presentation.ui.compose.theme
 
 import android.app.Activity
 import android.os.Build
