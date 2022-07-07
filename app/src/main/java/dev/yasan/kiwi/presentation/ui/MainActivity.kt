@@ -10,34 +10,27 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import dagger.hilt.android.AndroidEntryPoint
+import dev.yasan.kiwi.presentation.ui.compose.KiwiApp
 import dev.yasan.kiwi.presentation.ui.compose.theme.KiwiDestinationsTheme
 
+/**
+ * The main & only activity of Kiwi Destinations.
+ *
+ * Anything that can be put inside [KiwiApp] should not be in the activity.
+ */
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             KiwiDestinationsTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+                KiwiApp()
             }
         }
-    }
-}
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    KiwiDestinationsTheme {
-        Greeting("Android")
     }
+
 }
