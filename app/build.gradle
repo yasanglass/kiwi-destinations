@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'dagger.hilt.android.plugin'
     id 'com.google.devtools.ksp' version '1.6.10-1.0.4'
+    id 'com.adarshr.test-logger' version '3.2.0'
     id 'kotlin-kapt'
 }
 
