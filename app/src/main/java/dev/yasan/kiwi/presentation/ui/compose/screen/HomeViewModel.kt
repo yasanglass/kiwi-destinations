@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.yasan.kit.core.DispatcherProvider
 import dev.yasan.kit.core.Resource
-import dev.yasan.kiwi.data.entity.SearchResultResponse
+import dev.yasan.kiwi.domain.entity.Flight
 import dev.yasan.kiwi.domain.usecase.GetPopularFlightsUseCase
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,16 +22,17 @@ class HomeViewModel @Inject constructor(
     private val getPopularFlightsUseCase: GetPopularFlightsUseCase
 ) : ViewModel() {
 
-    companion object {
-        private const val TAG = "HomeViewModel"
-    }
-
     private var _popularFlights =
-        MutableStateFlow<Resource<SearchResultResponse>>(Resource.Initial())
-    val popularFlights: StateFlow<Resource<SearchResultResponse>> get() = _popularFlights
+        MutableStateFlow<Resource<List<Flight>>>(Resource.Initial())
+    val popularFlights: StateFlow<Resource<List<Flight>>> get() = _popularFlights
 
     private var loadPopularFlightsJob: Job? = null
 
+    /**
+     * Tries to load a list of popular flights into [popularFlights].
+     *
+     * @see GetPopularFlightsUseCase
+     */
     fun loadPopularFlights() {
         loadPopularFlightsJob?.cancel()
         loadPopularFlightsJob = viewModelScope.launch(dispatchers.io) {

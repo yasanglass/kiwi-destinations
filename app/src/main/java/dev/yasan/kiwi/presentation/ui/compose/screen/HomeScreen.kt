@@ -20,10 +20,11 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel()
 ) {
 
-    val popularFlights = viewModel.popularFlights.collectAsState(initial = Resource.Initial())
+    val popularFlightsResource = viewModel.popularFlights.collectAsState(initial = Resource.Initial())
+    val popularFlights = popularFlightsResource.value.data ?: emptyList()
 
-    LaunchedEffect(key1 = popularFlights.value) {
-        if (popularFlights.value is Resource.Initial) {
+    LaunchedEffect(key1 = popularFlightsResource.value) {
+        if (popularFlightsResource.value is Resource.Initial) {
             viewModel.loadPopularFlights()
         }
     }
@@ -32,7 +33,7 @@ fun HomeScreen(
 
         item {
 
-            val text = when (popularFlights.value) {
+            val text = when (popularFlightsResource.value) {
                 is Resource.Initial ->  "Initial"
                 is Resource.Loading ->  "Loading"
                 is Resource.Success ->  "Success"
@@ -44,12 +45,8 @@ fun HomeScreen(
 
         }
 
-        val flights = popularFlights.value.data?.flightResponses ?: emptyList()
-
-        items(items = flights) {
-            it.route.forEach { route ->
-                Text(text = route.cityFrom + " -> " + route.cityTo)
-            }
+        items(items = popularFlights) {
+            Text(text = it.countryFrom + " -> " + it.countryTo)
             Divider()
         }
 

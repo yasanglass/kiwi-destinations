@@ -1,6 +1,6 @@
 package dev.yasan.kiwi.data.source.remote
 
-import dev.yasan.kiwi.data.entity.SearchResultResponse
+import dev.yasan.kiwi.data.entity.FlightSearchResultResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -19,6 +19,6 @@ interface KiwiApi {
         @Query("adults") adults: Int = 1,
         @Query("typeFlight") type: String = "oneway",
         @Query("partner") partnerId: String = "skypicker-android",
-    ): Response<SearchResultResponse>
+    ): Response<FlightSearchResultResponse>
 
 }

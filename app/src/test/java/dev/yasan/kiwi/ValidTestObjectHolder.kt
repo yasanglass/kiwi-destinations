@@ -1,9 +1,6 @@
 package dev.yasan.kiwi
 
-import dev.yasan.kiwi.data.entity.Availability
-import dev.yasan.kiwi.data.entity.Country
-import dev.yasan.kiwi.data.entity.FlightResponse
-import dev.yasan.kiwi.data.entity.FlightRoute
+import dev.yasan.kiwi.data.entity.*
 
 /**
  * Holds a set of valid objects to ease testing.
@@ -40,7 +37,24 @@ object ValidTestObjectHolder {
         hashtags = listOf(
             "hashtag1", "hashtag2"
         ),
+        popularity = 100
     )
 
+    val flight = flightResponse.toFlight(currency = "EUR")
+
+    val flightList = listOf(
+        flight.copy(id = "1"),
+        flight.copy(id = "2"),
+        flight.copy(id = "3"),
+    )
+
+    val flightSearchResultResponse = FlightSearchResultResponse(
+        currency = "EUR",
+        flightResponses = listOf(
+            flightResponse.copy(id = "1"),
+            flightResponse.copy(id = "2"),
+            flightResponse.copy(id = "3"),
+        )
+    )
 
 }

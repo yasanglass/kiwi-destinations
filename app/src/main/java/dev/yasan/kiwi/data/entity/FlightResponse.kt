@@ -2,6 +2,7 @@ package dev.yasan.kiwi.data.entity
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import dev.yasan.kiwi.domain.entity.Flight
 
 @JsonClass(generateAdapter = true)
 data class FlightResponse(
@@ -9,6 +10,7 @@ data class FlightResponse(
     @field:Json(name = "countryFrom") val countryFrom: Country,
     @field:Json(name = "countryTo") val countryTo: Country,
     @field:Json(name = "fly_duration") val flyDuration: String,
+    @field:Json(name = "popularity") val popularity: Int,
     @field:Json(name = "price") val price: Float,
     @field:Json(name = "availability") val availability: Availability,
     @field:Json(name = "deep_link") val deepLink: String,
@@ -25,5 +27,17 @@ data class FlightResponse(
             && deepLink.isNotBlank()
             && route.isNotEmpty()
             && route.all { it.isValid() }
+
+    fun toFlight(currency: String) = Flight(
+        id = id,
+        countryFrom = countryFrom.name,
+        countryTo = countryTo.name,
+        flyDuration = flyDuration,
+        popularity = popularity,
+        price = price,
+        currency = currency,
+        seatsAvailable = availability.seats.takeIf { it != null } ?: 0,
+        deepLink = deepLink,
+    )
 
 }
