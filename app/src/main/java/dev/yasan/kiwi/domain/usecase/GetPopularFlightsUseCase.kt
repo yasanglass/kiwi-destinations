@@ -39,14 +39,14 @@ class GetPopularFlightsUseCase @Inject constructor(
                         val freshFlights = data.flightResponses
                             .map { it.toFlight(currency = data.currency) }
                         flightRepository.updateLocalFlights(newFlights = freshFlights)
-                        Resource.Success(data = freshFlights)
+                        Resource.Success(data = freshFlights.sortedByDescending { it.popularity })
                     } else {
                         Resource.Error(freshResponse.messageResourceId ?: R.string.error_generic)
                     }
 
                 } else {
                     // invoke: the local data is fresh, no need to fetch new data
-                    Resource.Success(data = flightRepository.getLocalFlights())
+                    Resource.Success(data = flightRepository.getLocalFlights().sortedByDescending { it.popularity })
                 }
             } catch (e: Exception) {
                 Resource.Error(messageResourceId = R.string.error_generic)

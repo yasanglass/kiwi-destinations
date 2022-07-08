@@ -1,8 +1,16 @@
 <resources>
     <string name="app_name">Kiwi Destinations</string>
-
     <string name="error_generic">Failed to load data</string>
     <string name="error_network">Failed to load data (Network error)</string>
     <string name="error_unsuccessful">Failed ot load data (Unsuccessful response)</string>
     <string name="try_again">Try Again</string>
+    <string name="book">Book</string>
+    <string name="todays_offers">Today\'s Offers</string>
+    <string name="most_popular_offer">Most Popular Offer</string>
+    <string name="seats_available">Available</string>
+    <string name="sold_out">Sold Out</string>
+    <plurals name="flight_count">
+        <item quantity="one">%1$d Flight</item>
+        <item quantity="other">%1$d Flights</item>
+    </plurals>
 </resources>

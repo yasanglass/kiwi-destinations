@@ -9,6 +9,8 @@ data class FlightResponse(
     @field:Json(name = "id") val id: String,
     @field:Json(name = "countryFrom") val countryFrom: Country,
     @field:Json(name = "countryTo") val countryTo: Country,
+    @field:Json(name = "cityFrom") val cityFrom: String,
+    @field:Json(name = "cityTo") val cityTo: String,
     @field:Json(name = "fly_duration") val flyDuration: String,
     @field:Json(name = "popularity") val popularity: Int,
     @field:Json(name = "price") val price: Float,
@@ -32,12 +34,16 @@ data class FlightResponse(
         id = id,
         countryFrom = countryFrom.name,
         countryTo = countryTo.name,
+        cityFrom = cityFrom,
+        cityTo = cityTo,
         flyDuration = flyDuration,
         popularity = popularity,
         price = price,
         currency = currency,
         seatsAvailable = availability.seats.takeIf { it != null } ?: 0,
         deepLink = deepLink,
+        routeSize = route.size,
+        destinationId = route.lastOrNull()?.mapIdto
     )
 
 }

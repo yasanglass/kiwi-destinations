@@ -37,7 +37,9 @@ object ValidTestObjectHolder {
         hashtags = listOf(
             "hashtag1", "hashtag2"
         ),
-        popularity = 100
+        popularity = 100,
+        cityTo = "city1",
+        cityFrom = "city2"
     )
 
     val flight = flightResponse.toFlight(currency = "EUR")

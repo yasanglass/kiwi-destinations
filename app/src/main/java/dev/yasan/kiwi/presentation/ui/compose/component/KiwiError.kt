@@ -18,14 +18,15 @@ import dev.yasan.kiwi.presentation.ui.compose.theme.MyAppIcons
 
 /**
  * Kiwi-themed error composable. All errors should use this composable.
+ * If you want it to show an retry button you can pass [onRetry], otherwise the button will not be shown.
  */
-@Preview(uiMode = UI_MODE_NIGHT_NO)
-@Preview(uiMode = UI_MODE_NIGHT_YES)
+@Preview(uiMode = UI_MODE_NIGHT_NO, group = "Without Button")
+@Preview(uiMode = UI_MODE_NIGHT_YES, group = "Without Button")
 @Composable
-fun ErrorItem(
+fun KiwiError(
     modifier: Modifier = Modifier,
     message: String = stringResource(id = R.string.error_generic),
-    onClick: () -> Unit = {}
+    onRetry: (() -> Unit)? = null
 ) {
 
     Column(
@@ -56,17 +57,25 @@ fun ErrorItem(
 
         }
 
-        Button(onClick = onClick) {
-            Text(
-                text = stringResource(id = R.string.try_again),
-                fontFamily = rubikFamily,
-            )
+        onRetry?.let {
+            Button(onClick = it) {
+                Text(
+                    text = stringResource(id = R.string.try_again),
+                    fontFamily = rubikFamily,
+                )
+            }
+            Spacer(modifier = Modifier.padding(grid()))
         }
-
-        Spacer(modifier = Modifier.padding(grid()))
 
         Divider()
 
     }
 
+}
+
+@Preview(uiMode = UI_MODE_NIGHT_NO, group = "With Button")
+@Preview(uiMode = UI_MODE_NIGHT_YES, group = "With Button")
+@Composable
+private fun KiwiErrorWithButtonPreview() {
+    KiwiError {}
 }

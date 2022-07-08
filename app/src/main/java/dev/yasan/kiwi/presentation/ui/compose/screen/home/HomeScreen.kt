@@ -1,5 +1,6 @@
 package dev.yasan.kiwi.presentation.ui.compose.screen.home
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
@@ -13,10 +14,12 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import dev.yasan.kit.core.Resource
 import dev.yasan.kiwi.R
+import dev.yasan.kiwi.presentation.ui.compose.component.KiwiTitle
 import dev.yasan.kiwi.presentation.ui.compose.screen.home.states.HomeScreenError
 import dev.yasan.kiwi.presentation.ui.compose.screen.home.states.HomeScreenLoading
 import dev.yasan.kiwi.presentation.ui.compose.screen.home.states.homeScreenSuccess
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 @Destination
 @RootNavGraph(start = true)
@@ -38,6 +41,10 @@ fun HomeScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
+        stickyHeader {
+            KiwiTitle(title = stringResource(id = R.string.app_name))
+        }
+
         when (val resource = popularFlightsResource.value) {
             is Resource.Success -> {
                 homeScreenSuccess(flights = resource.data ?: emptyList())
@@ -47,7 +54,7 @@ fun HomeScreen(
                     val messageResourceId = resource.messageResourceId ?: R.string.error_generic
                     HomeScreenError(
                         message = stringResource(id = messageResourceId),
-                        onClick = {
+                        onRetry = {
                             viewModel.loadPopularFlights()
                         }
                     )
