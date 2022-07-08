@@ -1,9 +1,9 @@
 package dev.yasan.kiwi
 
-import dev.yasan.kiwi.domain.entity.Availability
-import dev.yasan.kiwi.domain.entity.Country
-import dev.yasan.kiwi.domain.entity.Flight
-import dev.yasan.kiwi.domain.entity.FlightRoute
+import dev.yasan.kiwi.data.entity.Availability
+import dev.yasan.kiwi.data.entity.Country
+import dev.yasan.kiwi.data.entity.FlightResponse
+import dev.yasan.kiwi.data.entity.FlightRoute
 
 /**
  * Holds a set of valid objects to ease testing.
@@ -25,7 +25,7 @@ object ValidTestObjectHolder {
         mapIdto = "idTo"
     )
 
-    val flight = Flight(
+    val flightResponse = FlightResponse(
         id = "id",
         countryFrom = country,
         countryTo = country,

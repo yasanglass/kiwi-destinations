@@ -1,4 +1,4 @@
-package dev.yasan.kiwi.domain.entity
+package dev.yasan.kiwi.data.entity
 
 import com.google.common.truth.Truth
 import dev.yasan.kiwi.ValidTestObjectHolder

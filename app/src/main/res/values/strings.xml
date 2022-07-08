@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Kiwi Destinations</string>
+
+    <string name="error_generic">Failed to load data</string>
+    <string name="error_network">Failed to load data (Network error)</string>
+    <string name="error_unsuccessful">Failed ot load data (Unsuccessful response)</string>
 </resources>

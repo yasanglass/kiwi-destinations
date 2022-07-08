@@ -1,4 +1,4 @@
-package dev.yasan.kiwi.domain.entity
+package dev.yasan.kiwi.data.entity
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

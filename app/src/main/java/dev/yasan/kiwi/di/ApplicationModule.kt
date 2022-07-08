@@ -5,8 +5,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.yasan.kit.core.DispatcherProvider
+import dev.yasan.kiwi.data.repository.FlightRepositoryImp
 import dev.yasan.kiwi.BuildConfig
 import dev.yasan.kiwi.data.source.remote.KiwiApi
+import dev.yasan.kiwi.domain.repository.FlightRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
@@ -57,5 +59,10 @@ class ApplicationModule {
     @Provides
     fun provideKiwiApi(retrofit: Retrofit): KiwiApi =
         retrofit.create(KiwiApi::class.java)
+
+    @Singleton
+    @Provides
+    fun provideFlightRepository(kiwiApi: KiwiApi): FlightRepository =
+        FlightRepositoryImp(kiwiApi = kiwiApi)
 
 }

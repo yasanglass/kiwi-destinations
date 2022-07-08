@@ -1,4 +1,4 @@
-package dev.yasan.kiwi.domain.entity
+package dev.yasan.kiwi.data.entity
 
 import com.google.common.truth.Truth
 import dev.yasan.kiwi.ValidTestObjectHolder
@@ -17,6 +17,12 @@ class AvailabilityTest {
     @Test
     fun valid_availability_passes_validation() {
         Truth.assertThat(validAvailability.isValid()).isTrue()
+    }
+
+    @Test
+    fun null_availability_passes_validation() {
+        val availability = validAvailability.copy(seats = null)
+        Truth.assertThat(availability.isValid()).isTrue()
     }
 
     @Test

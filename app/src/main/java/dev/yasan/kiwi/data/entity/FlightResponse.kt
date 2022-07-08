@@ -1,10 +1,10 @@
-package dev.yasan.kiwi.domain.entity
+package dev.yasan.kiwi.data.entity
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Flight(
+data class FlightResponse(
     @field:Json(name = "id") val id: String,
     @field:Json(name = "countryFrom") val countryFrom: Country,
     @field:Json(name = "countryTo") val countryTo: Country,
