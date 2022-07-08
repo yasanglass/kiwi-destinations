@@ -4,4 +4,5 @@
     <string name="error_generic">Failed to load data</string>
     <string name="error_network">Failed to load data (Network error)</string>
     <string name="error_unsuccessful">Failed ot load data (Unsuccessful response)</string>
+    <string name="try_again">Try Again</string>
 </resources>

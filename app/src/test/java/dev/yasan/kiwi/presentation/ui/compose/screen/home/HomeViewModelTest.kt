@@ -1,4 +1,4 @@
-package dev.yasan.kiwi.presentation.ui.compose.screen
+package dev.yasan.kiwi.presentation.ui.compose.screen.home
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth

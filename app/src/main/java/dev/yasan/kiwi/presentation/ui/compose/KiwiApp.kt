@@ -5,7 +5,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.ramcosta.composedestinations.DestinationsNavHost
-import dev.yasan.kiwi.presentation.ui.compose.screen.NavGraphs
+import dev.yasan.kiwi.presentation.ui.compose.screen.home.NavGraphs
 
 /**
  * Top-level composable of the app.

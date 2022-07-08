@@ -1,4 +1,4 @@
-package dev.yasan.kiwi.presentation.ui.compose.screen
+package dev.yasan.kiwi.presentation.ui.compose.screen.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,6 +8,7 @@ import dev.yasan.kit.core.Resource
 import dev.yasan.kiwi.domain.entity.Flight
 import dev.yasan.kiwi.domain.usecase.GetPopularFlightsUseCase
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -38,6 +39,9 @@ class HomeViewModel @Inject constructor(
         loadPopularFlightsJob = viewModelScope.launch(dispatchers.io) {
             _popularFlights.value = Resource.Loading()
             val data = getPopularFlightsUseCase()
+            if (data is Resource.Error) {
+                delay(2500) // Fake delay for improved UX
+            }
             _popularFlights.value = data
         }
     }
