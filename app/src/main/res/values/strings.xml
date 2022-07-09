@@ -9,6 +9,7 @@
     <string name="most_popular_offer">Most Popular Offer</string>
     <string name="seats_available">Available</string>
     <string name="sold_out">Sold Out</string>
+    <string name="no_offers_available">No Offers Available</string>
     <plurals name="flight_count">
         <item quantity="one">%1$d Flight</item>
         <item quantity="other">%1$d Flights</item>

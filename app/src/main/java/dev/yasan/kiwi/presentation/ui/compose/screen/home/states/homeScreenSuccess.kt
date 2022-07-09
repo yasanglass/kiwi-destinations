@@ -18,11 +18,17 @@ import dev.yasan.kiwi.presentation.ui.compose.screen.home.modules.FlightItem
 fun LazyListScope.homeScreenSuccess(flights: List<Flight>) {
 
     item {
+        val topText = if (flights.isEmpty()) {
+            stringResource(id = R.string.no_offers_available)
+        } else {
+            stringResource(id = R.string.todays_offers)
+        }
+
         Text(
             modifier = Modifier
                 .padding(top = grid(2))
                 .padding(bottom = grid(0.5f)),
-            text = stringResource(id = R.string.todays_offers),
+            text = topText,
             fontWeight = FontWeight.Bold,
             fontStyle = FontStyle.Italic
         )
