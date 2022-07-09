@@ -1,6 +1,8 @@
 package dev.yasan.kiwi.presentation.ui.compose.screen.home
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
@@ -36,35 +38,37 @@ fun HomeScreen(
         }
     }
 
-    LazyColumn(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+    Column(verticalArrangement = Arrangement.Top) {
 
-        stickyHeader {
-            KiwiTitle(title = stringResource(id = R.string.app_name))
-        }
+        KiwiTitle(title = stringResource(id = R.string.app_name))
 
-        when (val resource = popularFlightsResource.value) {
-            is Resource.Success -> {
-                homeScreenSuccess(flights = resource.data ?: emptyList())
-            }
-            is Resource.Error -> {
-                item {
-                    val messageResourceId = resource.messageResourceId ?: R.string.error_generic
-                    HomeScreenError(
-                        message = stringResource(id = messageResourceId),
-                        onRetry = {
-                            viewModel.loadPopularFlights()
-                        }
-                    )
+        LazyColumn(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
+            when (val resource = popularFlightsResource.value) {
+                is Resource.Success -> {
+                    homeScreenSuccess(flights = resource.data ?: emptyList())
+                }
+                is Resource.Error -> {
+                    item {
+                        val messageResourceId = resource.messageResourceId ?: R.string.error_generic
+                        HomeScreenError(
+                            message = stringResource(id = messageResourceId),
+                            onRetry = {
+                                viewModel.loadPopularFlights()
+                            }
+                        )
+                    }
+                }
+                else -> {
+                    item {
+                        HomeScreenLoading()
+                    }
                 }
             }
-            else -> {
-                item {
-                    HomeScreenLoading()
-                }
-            }
+
         }
 
     }
