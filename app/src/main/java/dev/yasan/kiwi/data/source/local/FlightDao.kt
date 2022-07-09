@@ -18,9 +18,6 @@ interface FlightDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(flight: Flight)
 
-    @Update
-    suspend fun update(flight: Flight)
-
     @Delete
     suspend fun delete(flight: Flight)
 
