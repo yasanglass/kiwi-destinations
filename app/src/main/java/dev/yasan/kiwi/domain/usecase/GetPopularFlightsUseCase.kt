@@ -21,7 +21,7 @@ class GetPopularFlightsUseCase @Inject constructor(
 
     suspend operator fun invoke(
         limit: Int = 5,
-        flyFrom: String = "49.2-16.61-250km"
+        flyFrom: String = "49.2-16.61-250km" // Dummy base location
     ): Resource<List<Flight>> =
         withContext(dispatchers.io) {
             return@withContext try {

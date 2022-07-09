@@ -34,13 +34,12 @@ fun DestinationImage(modifier: Modifier = Modifier, flight: Flight) {
         val imageLoadState = remember {
             mutableStateOf(ImageLoadState.LOADING)
         }
-
         SubcomposeAsyncImage(
             modifier = modifier
                 .padding(bottom = grid())
                 .clip(RoundedCornerShape(grid()))
                 .requiredHeight(grid(24))
-                .aspectRatio(ratio = 600f / 330f)
+                .aspectRatio(ratio = 60f / 33f)
                 .placeholder(
                     visible = imageLoadState.value == ImageLoadState.LOADING,
                     highlight = PlaceholderHighlight.fade(highlightColor = Color.LightGray),

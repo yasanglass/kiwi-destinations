@@ -1,6 +1,5 @@
 package dev.yasan.kiwi.presentation.ui.compose.screen.home
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,12 +20,11 @@ import dev.yasan.kiwi.presentation.ui.compose.screen.home.states.HomeScreenError
 import dev.yasan.kiwi.presentation.ui.compose.screen.home.states.HomeScreenLoading
 import dev.yasan.kiwi.presentation.ui.compose.screen.home.states.homeScreenSuccess
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 @Destination
 @RootNavGraph(start = true)
 fun HomeScreen(
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel(),
 ) {
 
     val popularFlightsResource =

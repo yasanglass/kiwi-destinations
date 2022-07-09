@@ -25,6 +25,9 @@ import dev.yasan.kiwi.domain.entity.Flight
 import dev.yasan.kiwi.domain.entity.FlightData
 import dev.yasan.kiwi.presentation.ui.compose.theme.MyAppIcons
 
+/**
+ * Shows a single [Flight] in the UI.
+ */
 @Composable
 fun FlightItem(
     modifier: Modifier = Modifier,
