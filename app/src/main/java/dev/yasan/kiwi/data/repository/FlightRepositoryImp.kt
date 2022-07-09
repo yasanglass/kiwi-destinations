@@ -6,6 +6,7 @@ import android.util.Log
 import dev.yasan.kit.core.Resource
 import dev.yasan.kiwi.R
 import dev.yasan.kiwi.data.entity.FlightSearchResultResponse
+import dev.yasan.kiwi.data.entity.SearchSortMode
 import dev.yasan.kiwi.data.source.local.FlightDao
 import dev.yasan.kiwi.data.source.remote.KiwiApi
 import dev.yasan.kiwi.domain.entity.Flight
@@ -26,7 +27,7 @@ class FlightRepositoryImp @Inject constructor(
     }
 
     override suspend fun searchRemoteFlights(
-        sort: String,
+        sort: SearchSortMode,
         ascending: Int,
         flyFrom: String,
         flyTo: String,
@@ -35,7 +36,7 @@ class FlightRepositoryImp @Inject constructor(
 
         return try {
             val response = kiwiApi.searchFlights(
-                sort = sort,
+                sort = sort.param,
                 ascending = ascending,
                 flyFrom = flyFrom,
                 flyTo = flyTo,

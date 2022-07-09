@@ -3,6 +3,7 @@ package dev.yasan.kiwi.domain.usecase
 import dev.yasan.kit.core.DispatcherProvider
 import dev.yasan.kit.core.Resource
 import dev.yasan.kiwi.R
+import dev.yasan.kiwi.data.entity.SearchSortMode
 import dev.yasan.kiwi.domain.entity.Flight
 import dev.yasan.kiwi.domain.repository.FlightRepository
 import kotlinx.coroutines.withContext
@@ -27,7 +28,7 @@ class GetPopularFlightsUseCase @Inject constructor(
                 if (flightRepository.shouldFetchFreshData()) {
                     //  fetching fresh data, local data unavailable or stale"
                     val freshResponse = flightRepository.searchRemoteFlights(
-                        sort = "popularity",
+                        sort = SearchSortMode.POPULARITY,
                         ascending = 0,
                         flyFrom = flyFrom,
                         flyTo = "anywhere",

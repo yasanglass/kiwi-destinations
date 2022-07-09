@@ -3,6 +3,7 @@ package dev.yasan.kiwi.data.repository
 import dev.yasan.kit.core.Resource
 import dev.yasan.kiwi.ValidTestObjectHolder
 import dev.yasan.kiwi.data.entity.FlightSearchResultResponse
+import dev.yasan.kiwi.data.entity.SearchSortMode
 import dev.yasan.kiwi.domain.entity.Flight
 import dev.yasan.kiwi.domain.repository.FlightRepository
 
@@ -17,7 +18,7 @@ class MockFlightRepository : FlightRepository {
     }
 
     override suspend fun searchRemoteFlights(
-        sort: String,
+        sort: SearchSortMode,
         ascending: Int,
         flyFrom: String,
         flyTo: String,

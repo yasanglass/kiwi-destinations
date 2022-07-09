@@ -2,6 +2,7 @@ package dev.yasan.kiwi.domain.repository
 
 import dev.yasan.kit.core.Resource
 import dev.yasan.kiwi.data.entity.FlightSearchResultResponse
+import dev.yasan.kiwi.data.entity.SearchSortMode
 import dev.yasan.kiwi.domain.entity.Flight
 
 /**
@@ -16,7 +17,7 @@ interface FlightRepository {
      * Searches for flights using the sent params in the remotely available data.
      */
     suspend fun searchRemoteFlights(
-        sort: String,
+        sort: SearchSortMode,
         ascending: Int,
         flyFrom: String,
         flyTo: String,
