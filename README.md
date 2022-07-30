@@ -16,7 +16,7 @@ A simple sample app to find the best offers of the day from [kiwi.com](https://w
 - Kotlin + Coroutines + Flow
 - MVVM + Clean Architecture
 - Hilt for Dependency Injection
-- Jetpack Compose for the UI (single activity & no layaout xml files)
+- Jetpack Compose for the UI (single activity & no layout xml files)
 - Room Persistence to cache the data
 - Retrofit + Moshi for networking
 - Coil for image loading
